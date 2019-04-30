@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web App Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="main-header">
+        <h2>Dashboard</h2>
+        <div class="main-header-search">
+          <input type="search" placeholder="Search..." />
+        </div>
+      </div>
+    </header>
+
+    <!-- alert banner -->
+    <div class="alert" id="alert"></div>
+
+    <nav class="navbar">
+      <ul>
+          <a id="dashboard-link"><img src="" alt="" /></a>
+          <a id="profile-link"><img src="" alt="" /></a>
+          <a id="stat-link"><img src="" alt="" /></a>
+          <a id="settings-link"><img src="" alt="" /></a>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="row">
+        <!-- line graph charts -->
+        <section id="traffic">
+          <div class="traffic-header">
+            <h3>Traffic</h3>
+            <ul class="traffic-nav">
+              <li class="traffic-nav-link">Hourly</li>
+              <li class="traffic-nav-link">Daily</li>
+              <li class="traffic-nav-link active">Weekly</li>
+              <li class="traffic-nav-link">Monthly</li>
+          </div>
+          <div class="widget-container-full">
+            <!-- insert graph here -->
+            <canvas id="traffic-chart"></canvas>
+          </div>
+        </section>
+
+        <!-- bar graph chart -->
+        <section id="">
+          <div class="traffic-header">
+            <h3>Daily Traffic</h3>
+
+          </div>
+
+          <div>
+            <h3>MOBILE USERS</h3>
+          </div>
+          <div class="widget-container-half">
+            <!-- insert graph here -->
+            <canvas id="traffic-chart"></canvas>
+          </div>
+        </section>
+
+
+        <!-- section -->
+        <section id="socialstats">
+          <div>Twitter</div>
+          <div>Facebook</div>
+          <div>Google+</div>
+        </section>
+        <!-- section -->
+        <section id="memberadmin">
+          <div>
+            <h3>NEW MEMBERS</h3>
+          </div>
+          <div>
+            <h3>RECENT ACTIVITY</h3>
+          </div>
+          <div>
+            <h3>MESSAGE USER</h3>
+          </div>
+          <div>
+            <h3>SETTINGS</h3>
+          </div>
+        </section>
+        <!-- sections end -->
+      </div>
+    </main>
+
+    <script type="text/javascript" src="js/.js"></script>
+    <script type="text/javascript" src="js/.js"></script>
+  </body>
+</html>
