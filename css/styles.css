@@ -68,7 +68,7 @@ img.profile-avatar {
   transition: transform .3s;
 }
 .bell:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition-timing-function: ease-out;
 }
 /* ------------------------------------
@@ -83,7 +83,7 @@ nav {
   padding: 0.5em;
 }
 .nav-link {
-  margin: 0 0.5em;
+  margin: 0 0.75em;
 }
 .nav-link > img {
   width: 1.75em;
@@ -96,10 +96,16 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 2em;
 }
-
+h2 {
+  justify-self: flex-start;
+}
+.main-header-search {
+  justify-self: flex-end;
+  width: 30%;
+}
 input[type=search] {
   width: 100%;
   font-size: 1em;
@@ -110,3 +116,39 @@ input[type=search] {
 /* ------------------------------------
   main structure
 ------------------------------------ */
+img {
+  width: 100%:
+}
+
+/* ------------------------------------
+  animations
+------------------------------------ */
+@keyframes ringing {
+  10% {
+    transform: rotate(5deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(11deg) scale(1.03);
+  }
+  55% {
+    transform: rotate(-11deg) scale(1.04);
+  }
+  70% {
+    transform: rotate(11deg) scale(1.03);
+  }
+  85% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.bell:hover {
+  transform-origin: 50% 50%;
+  transform: rotate(0deg) scale(1);
+  animation: ringing 0.75s;
+  animation-timing-function: ease-in;
+}
