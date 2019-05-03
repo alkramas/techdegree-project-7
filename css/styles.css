@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Aleo:300,300i,400,400i,700,700i");
-@import url("https://fonts.googleapis.com/css?family=Aleo:300,300i,400,400i,700,700i");
+
+
 .img--avatar {
   display: block;
   margin: 2em auto 2em auto;
@@ -10,38 +10,95 @@
 ------------------------------------ */
 * {
   box-sizing: border-box;
-  font-family: "Aleo", serif;
+  font-family: 'Alegreya Sans', sans-serif;
 }
 p {
   font-size: 0.75em;
-  color: darkgrey;
 }
 h1 {
   font-size: 1.2em;
-  color: darkgrey;
+  font-weight: 300;
+  margin: 0 0 0 0;
 }
 h2 {
-  font-size: 1em;
-  font-weight: 300;
-  color: darkgrey;
+  font-size: 1.2em;
+  color: #353747;
+}
+h3 {
+  color: #353747;
+}
+body {
+  margin: 0 0 0 0;
 }
 
 /* ------------------------------------
-  main structure
+  header
 ------------------------------------ */
 header {
-
+  background-color: #5a61a8;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em 1em;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
 }
+h1 {
+  font-weight: 200;
+}
+img.profile-avatar {
+  max-width: 2em;
+  max-height: 2em;
+  border-radius: 50%;
+}
+.header-right-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.profile-name {
+  text-align: right;
+  color: white;
+  margin: 0.5em;
+}
+.bell {
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0.15em 0.5em 0.15em 0.15em;
+  transition: transform .3s;
+}
+.bell:hover {
+  transform: scale(1.2);
+  transition-timing-function: ease-out;
+}
+/* ------------------------------------
+  nav
+------------------------------------ */
 nav {
-
+  background-color: #353747;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
 }
-
-
-
-
-
-
-
+.nav-link {
+  margin: 0 0.5em;
+}
+.nav-link > img {
+  width: 1.75em;
+  height: 1.75em;
+}
+/* ------------------------------------
+  sub header and search
+------------------------------------ */
+.main-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 2em;
+}
 
 input[type=search] {
   width: 100%;
@@ -50,3 +107,6 @@ input[type=search] {
   border: solid lightgrey 1px;
   padding: 0 0 0 8px;
 }
+/* ------------------------------------
+  main structure
+------------------------------------ */
