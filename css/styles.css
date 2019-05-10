@@ -15,6 +15,7 @@
 }
 p {
   font-size: 0.75em;
+  margin: 0 0 0 0;
 }
 h1 {
   font-size: 1.2em;
@@ -31,8 +32,9 @@ h3 {
 body {
   margin: 0 0 0 0;
 }
-
-
+section {
+  padding: 0 0.5em;
+}
 /* ------------------------------------
   header
 ------------------------------------ */
@@ -90,34 +92,48 @@ nav {
   margin: 0 0.75em;
 }
 .nav-link > img {
-  width: 1.75em;
-  height: 1.75em;
+  width: 1.5em;
+  height: 1.5em;
 }
 
 
 /* ------------------------------------
-  sub header and search
+  main header and search
 ------------------------------------ */
 .main-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 2em;
+  height: 3em;
 }
 h2 {
-  justify-self: flex-start;
+  padding: 0.6em;
+  width: 6em;
 }
 .main-header-search {
-  justify-self: flex-end;
-  width: 30%;
+  padding: 0.5em;
+  width: 100%;
+  height: 100%;
+  border-bottom: solid 1px #DDDDDD;
+  border-left: solid 1px #DDDDDD;
+  background-color: #FBFBFB;
+  border-radius: 0 0 0.25em 0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* alert messages: dont display */
+.alert {
+  display: none;
 }
 input[type=search] {
-  width: 100%;
+  width: 40%;
   font-size: 1em;
   border-radius: 3px;
   border: solid lightgrey 1px;
   padding: 0 0 0 8px;
+  height: 80%;
 }
 /* ------------------------------------
   main structure
@@ -126,7 +142,7 @@ img {
   width: 100%;
 }
 .profile-image {
-  max-width: 3em;
+  max-width: 2em;
   border-radius: 2em;
 }
 
@@ -161,6 +177,17 @@ img {
   height: 3em;
 }
 
+/* ------------------------------------
+  section members and activity
+------------------------------------ */
+.members-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+a[href*="@"], .members-text > a {
+  font-size: 0.75em;
+}
 /* ------------------------------------
   animations
 ------------------------------------ */
@@ -246,6 +273,29 @@ main {
 }
 @media (min-width: 768px) {
   .grid-container {
-
+    grid-template-columns: 3em 1fr;
+    grid-template-areas:
+      "header header"
+      "navigation main";
+    /* grid-column-gap: 0.5em; */
+  }
+  .navigation {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .nav-link {
+    padding: 0.5em 0 1em 0;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .main-header {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  #traffic, .social {
+    grid-column-start: 1;
+    grid-column-end: -1;
   }
 }
