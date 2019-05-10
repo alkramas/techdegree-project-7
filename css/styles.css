@@ -28,12 +28,20 @@ h2 {
 }
 h3 {
   color: #353747;
+  margin: 0 0 0 0;
 }
 body {
   margin: 0 0 0 0;
 }
 section {
-  padding: 0 0.5em;
+  padding: 0.75em;
+  border-top: solid 1px #DDDDDD;
+  border-bottom: solid 1px #DDDDDD;
+}
+section.daily,
+section.members,
+section.message {
+  border-right: solid 0px #DDDDDD;
 }
 /* ------------------------------------
   header
@@ -150,10 +158,13 @@ img {
   social section styling
 ------------------------------------ */
 .social {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1.5em;
+}
+.social > h3 {
+  grid-column-start: 1;
+  grid-column-end: -1;
 }
 .social-container {
   border: solid 1px #DDDDDD;
@@ -164,6 +175,8 @@ img {
   display: flex;
   flex-direction: row;
 }
+
+
 .twitter-icon,
 .facebook-icon,
 .google-icon {
@@ -293,6 +306,11 @@ main {
   .main-header {
     grid-column-start: 1;
     grid-column-end: -1;
+  }
+  section.daily,
+  section.members,
+  section.message {
+    border-right: solid 1px #DDDDDD;
   }
   #traffic, .social {
     grid-column-start: 1;
