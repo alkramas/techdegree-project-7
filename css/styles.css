@@ -29,12 +29,15 @@ h2 {
 h3 {
   color: #353747;
   margin: 0 0 0 0;
+  font-weight: normal;
+  font-size: 0.85em;
+  text-transform: uppercase;
 }
 body {
   margin: 0 0 0 0;
 }
 section {
-  padding: 0.75em;
+  padding: 1.5em;
   border-top: solid 1px #DDDDDD;
   border-bottom: solid 1px #DDDDDD;
 }
@@ -161,6 +164,8 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1.5em;
+  grid-row-gap: 0.5em;
+  /*grid-column-gap: 0.5em;*/
 }
 .social > h3 {
   grid-column-start: 1;
@@ -175,19 +180,33 @@ img {
   display: flex;
   flex-direction: row;
 }
-
+.social-text p:first-child {
+  font-size: 1em;
+  font-weight: bold;
+  color: #5a61a8;
+  /*margin: 0.25em 0 0 0.5em;*/
+}
+.social-text p:last-child {
+  font-size: 2.5em;
+  margin: -0.15em 0 0 0;
+  font-weight: 300;
+}
 
 .twitter-icon,
 .facebook-icon,
 .google-icon {
-  width: 2em;
+  /*width: 2em;*/
   fill: #fff;
+  transform-origin: 50% 50%;
+  transform: scale(0.6);
 }
 .social-image {
   border-radius: 50%;
   background-color: #5a61a8;
   width: 3em;
   height: 3em;
+  margin-right: 0.75em;
+  align-self: center
 }
 
 /* ------------------------------------
@@ -197,9 +216,23 @@ img {
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-bottom: solid 1px #DDDDDD;
+    padding: 0.75em 0 0.75em 0;
 }
 a[href*="@"], .members-text > a {
   font-size: 0.75em;
+}
+.profile-image {
+  margin-right: 0.5em;
+}
+.members-info::after {
+  content: ;
+  width: 3em
+  height: 3em;
+}
+.settings {
+  display: flex;
+  flex-direction: column;
 }
 /* ------------------------------------
   animations
@@ -239,13 +272,27 @@ a[href*="@"], .members-text > a {
 
 
 /* ------------------------------------
-  sections memebers and settings
+  sections message and settings
 ------------------------------------ */
-/* .message, .settings {
+.message form, .settings form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-} */
+}
+.message input, .message textarea {
+  margin-top: 1em;
+  background-color: #FBFBFB;
+  border-radius: 3px;
+  border: solid 1px #DDDDDD;
+  padding: 0.5em;
+}
+.message button {
+  margin-top: 1em;
+  background-color: #5a61a8;
+  border-radius: 3px;
+  padding: 0.5em;
+  color: white;
+  text-transform: uppercase;
+}
 
 input[type="checkbox"] {
 
