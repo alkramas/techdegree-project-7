@@ -38,7 +38,6 @@ body {
 }
 section {
   padding: 1.5em;
-  border-top: solid 1px #DDDDDD;
   border-bottom: solid 1px #DDDDDD;
 }
 section.daily,
@@ -46,6 +45,9 @@ section.members,
 section.message {
   border-right: solid 0px #DDDDDD;
 }
+/* .hidden {
+  display: none;
+} */
 /* ------------------------------------
   header
 ------------------------------------ */
@@ -146,6 +148,12 @@ input[type=search] {
   padding: 0 0 0 8px;
   height: 80%;
 }
+.widget-container-full {
+  width: 100%;
+}
+canvas {
+  width: 100%;
+}
 /* ------------------------------------
   main structure
 ------------------------------------ */
@@ -156,7 +164,16 @@ img {
   max-width: 2em;
   border-radius: 2em;
 }
-
+/* ------------------------------------
+  Overrides toggle
+------------------------------------ */
+.switch-ios.switch-toggle {
+  background-color: transparent !important;
+  border: solid black 0px !important;
+  width: 30%;
+  float: right;
+  box-shadow: none !important;
+}
 /* ------------------------------------
   social section styling
 ------------------------------------ */
@@ -216,14 +233,25 @@ img {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     border-bottom: solid 1px #DDDDDD;
     padding: 0.75em 0 0.75em 0;
+}
+.activity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: solid 1px #DDDDDD;
+  padding: 0.75em 0 0.75em 0;
 }
 a[href*="@"], .members-text > a {
   font-size: 0.75em;
 }
 .profile-image {
   margin-right: 0.5em;
+}
+.members-text, .members-info {
+  display: inline-block;
 }
 .members-info::after {
   content: ;
@@ -285,14 +313,7 @@ a[href*="@"], .members-text > a {
   border: solid 1px #DDDDDD;
   padding: 0.5em;
 }
-.message button {
-  margin-top: 1em;
-  background-color: #5a61a8;
-  border-radius: 3px;
-  padding: 0.5em;
-  color: white;
-  text-transform: uppercase;
-}
+
 
 input[type="checkbox"] {
 
@@ -304,10 +325,52 @@ span.toggle {
   width: 5em !important;
   display: inline-block !important;
   vertical-align: middle !important;
+  position: absolute !important;
+  left: 10em;
+  top: 0.75em;
+}
+/* switches */
+.settings label {
+    font-size: 0.75em;
+    line-height: 3.5;
+}
+.switch-light {
+  width: fit-content !important;
 }
 /*timezone select*/
-.form-field {
-
+select.user-input {
+  margin-top: 1em;
+  height: 2em;
+  border: solid 1px #DDDDDD;
+}
+/*buttons*/
+.message button {
+  margin-top: 1em;
+}
+.settings-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.settings-button button {
+  flex-grow: 2;
+  margin-top: 1em;
+}
+.settings-button button:first-child {
+  margin-right: 1em;
+}
+button {
+  border-radius: 3px;
+  border: none;
+  padding: 0.5em;
+  text-transform: uppercase;
+  color: white;
+}
+.button-disabled {
+  background-color: #DDDDDD;
+}
+button.button-primary {
+  background-color: #5a61a8;
 }
 /* ------------------------------------
   grid system
