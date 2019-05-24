@@ -1,16 +1,26 @@
 
 
+//alerts for main content
+const notifications = document.querySelector('.notifications');
 
+// close notification alerts
+notifications.addEventListener('click', function(event) {
+  let alertContainer = event.target.parentNode;
+  let alertContainerId = event.target.parentNode.id;
+  let eventTarget = event.target.className;
+  if (eventTarget == 'close-alert') {
+    alertContainer.style.display = 'none';
+  }
+});
 
-
-
-
-
-
-
-
-
-
+// open notification alerts with click on bell
+const iconBell = document.querySelector('div.bell');
+iconBell.addEventListener('click', function(event) {
+  let alerts = notifications.children;
+  for (let i = 0; i < alerts.length; i += 1) {
+    alerts[i].style.display = 'flex';
+  }
+});
 
 
 // search users
@@ -18,9 +28,7 @@
 const searchInput = document.querySelector('#userSearch');
 const membersAll = document.querySelectorAll('.members-container');
 
-
-
-
+// filter members from user input in search
 searchInput.addEventListener ('input', function() {
   let searchInputValue = searchInput.value.toLowerCase();
 
@@ -30,13 +38,15 @@ searchInput.addEventListener ('input', function() {
     let memberTextContainer = memberInfoContainer.lastElementChild;
     let memberName = memberTextContainer.firstElementChild.innerHTML.toLowerCase();
     let memberEmail = memberTextContainer.lastElementChild.innerText;
-    console.log(memberName);
-    console.log(searchInputValue);
+
+    // console.log(memberName);
+    // console.log(searchInputValue);
 
     let searchMatch = memberName.includes(searchInputValue);
 
     if ( searchMatch == true ) {
         memberThis.style.display = 'flex';
+        // memberThis.classList.add('selected-member');
     }
     else {
       memberThis.style.display = 'none';
@@ -45,21 +55,114 @@ searchInput.addEventListener ('input', function() {
 });
 
 
-let membersSelection = document.querySelectorAll('.members-container');
-console.log(membersSelection);
+// select member from board with click, highlight member, diselect others
+const newmembers = document.querySelector('section.members');
+const membersSelection = newmembers.querySelectorAll('.members-container');
+// console.log(membersSelection);
 
-for (let i = 0; i < membersSelection.length; i += 1) {
-    membersSelection[i].addEventListener('click', function(event) {
-      // let eventParent = event.target.parentNode;
-        // console.log(membersSelection[i].);
+newmembers.addEventListener('click', function(event) {
+  let eventParent = event.target.parentNode;
+  let eventGrandParent = eventParent.parentNode;
+  let eventGreatGrandParent = eventGrandParent.parentNode;
 
-      // if (event.target.className == 'member-info-container') {
-      //   let thisMember = event.target;
-      //   console.log(thisMember);
-      // }
+  for (let i = 0; i < membersSelection.length; i += 1) {
+    let thisMemberContainer = membersSelection[i];
+    if ( membersSelection[i].classList.contains('selected-member') ) {
+      searchInput.value = '';
+      thisMemberContainer.classList.remove('selected-member');
+    }
+    else if ( eventGreatGrandParent.className !== 'selected-member' && membersSelection[i] == eventGreatGrandParent ) {
+        let thisMemberName = thisMemberContainer.querySelector('p').innerText;
+        thisMemberContainer.classList.add('selected-member');
+        searchInput.value = thisMemberName;
+        // console.log(thisMemberName);
+    }
+  }
+});
 
-    });
+
+// call autocomplete jquery plugin
+var options = {
+    data: [ {name: 'Victoria Chambers', email: 'victoria.chambers80@example.com'},
+            {name: 'Pedro Hiestand', email: 'pedro.hiestand@example.com'},
+            {name: 'Eleni Mano', email: 'eleni.mano@example.com'},
+            {name: 'Chris Beraux', email: 'chirs.beraux@example.com'}
+          ],
+    getValue: "name",
+    template: {
+        type: "description",
+        fields: {
+            description: "email"
+        }
+    },
+    list: {
+        match: {
+            enabled: true
+        },
+        onSelectItemEvent: function() {
+            for (let i = 0; i < membersSelection.length; i += 1) {
+              let thisMemberContainer = membersSelection[i];
+              let thisMember = thisMemberContainer.querySelector('.members-text');
+              let thisMemberText = thisMember.firstElementChild.innerText;
+              // console.log(thisMemberText);
+
+
+              if (thisMemberText === name) {
+                console.log(thisMemberText);
+              }
+
+            }
+        }
+    },
+    theme: "round"
 };
+$("#userSearch").easyAutocomplete(options);
+
+
+// create functions with alerts from plugin
+function notifySuccess() {
+  $("#send").notify(
+  "Message has been send successfully",
+  "success",
+  { position:"bottom" },
+  {showAnimation: 'slideDown'},
+  {hideAnimation: 'slideUp'}
+  );
+};
+function notifyErrorMember() {
+  $("#send").notify(
+  "Please select a member from the board",
+  "error",
+  { position:"bottom" },
+  {showAnimation: 'slideDown'},
+  {hideAnimation: 'slideUp'}
+  );
+};
+function notifyErrorMessage() {
+  $("#send").notify(
+  "Please type a message in the message field",
+  "error",
+  { position:"bottom" },
+  {showAnimation: 'slideDown'},
+  {hideAnimation: 'slideUp'}
+  );
+};
+
+// validate message form
+const buttonSend = document.querySelector('button#send');
+
+buttonSend.addEventListener('click', function(event)  {
+    let memberSelected = newmembers.querySelectorAll('.selected-member');
+    let messageField = document.querySelector('#messageField');
+    event.preventDefault();
+      if (memberSelected.length > 0 && messageField.value !== '') {
+        notifySuccess();
+      } else if (memberSelected.length < 1) {
+        notifyErrorMember();
+      } else if (messageField.value == '') {
+        notifyErrorMessage();
+      }
+});
 
 
 
