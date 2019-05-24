@@ -107,9 +107,9 @@ var options = {
               // console.log(thisMemberText);
 
 
-              if (thisMemberText === name) {
-                console.log(thisMemberText);
-              }
+              // if (thisMemberText === name) {
+              //   console.log(thisMemberText);
+              // }
 
             }
         }
