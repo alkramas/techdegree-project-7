@@ -26,7 +26,8 @@ iconBell.addEventListener('click', function(event) {
 // search users
 //read input from search field
 const searchInput = document.querySelector('#userSearch');
-const membersAll = document.querySelectorAll('.members-container');
+const sectionMembers = document.querySelector('section.members');
+const membersAll = sectionMembers.querySelectorAll('.members-container');
 
 // filter members from user input in search
 searchInput.addEventListener ('input', function() {
@@ -100,19 +101,12 @@ var options = {
             enabled: true
         },
         onSelectItemEvent: function() {
-            for (let i = 0; i < membersSelection.length; i += 1) {
-              let thisMemberContainer = membersSelection[i];
-              let thisMember = thisMemberContainer.querySelector('.members-text');
-              let thisMemberText = thisMember.firstElementChild.innerText;
-              // console.log(thisMemberText);
+        			var value = $("#userSearch").getSelectedItemData().name;
+              var memberText = $('.members-text');
+              // loop though all memberText-containers, find match in child element and add class memberSelected
+              console.log(memberText);
 
-
-              // if (thisMemberText === name) {
-              //   console.log(thisMemberText);
-              // }
-
-            }
-        }
+        		}
     },
     theme: "round"
 };
