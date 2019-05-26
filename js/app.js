@@ -17,7 +17,8 @@
 //read input from search field
 const searchInput = document.querySelector('#userSearch');
 const membersAll = document.querySelectorAll('.members-container');
-
+//when single member filtered, or clicked: highlight element
+const memberContainerAll = document.querySelectorAll('.members-container');
 
 
 
@@ -37,6 +38,7 @@ searchInput.addEventListener ('input', function() {
 
     if ( searchMatch == true ) {
         memberThis.style.display = 'flex';
+        // memberThis.classList = 'show';
     }
     else {
       memberThis.style.display = 'none';
@@ -45,18 +47,28 @@ searchInput.addEventListener ('input', function() {
 });
 
 
+
+
+// select member from section new members
+// add email to input search user
 let membersSelection = document.querySelectorAll('.members-container');
-console.log(membersSelection);
+// console.log(membersSelection);
+let messageUserSearch = document.querySelector('#userSearch');
+let selectedMember = document.querySelector('.show');
 
 for (let i = 0; i < membersSelection.length; i += 1) {
     membersSelection[i].addEventListener('click', function(event) {
-      // let eventParent = event.target.parentNode;
-        // console.log(membersSelection[i].);
+      let membersInfoContainer = membersSelection[i].firstElementChild;
+      let membersText = membersInfoContainer.lastElementChild;
+      let membersEmail = membersText.lastElementChild.innerText;
 
-      // if (event.target.className == 'member-info-container') {
-      //   let thisMember = event.target;
-      //   console.log(thisMember);
-      // }
+      messageUserSearch.value = membersEmail;
+      console.log(membersEmail);
+
+    // if (selectedMember === null) {
+    //       this.classList = 'show';
+    //       selectedMember.classList.remove('show');
+    //   }
 
     });
 };
