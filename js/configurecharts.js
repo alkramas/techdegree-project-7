@@ -10,15 +10,18 @@ function toggleTrafficChart() {
     let thisElement = toggleCollection[i];
     if (thisElement.checked === true) {
       // console.log(thisElement.id + ' is toggled');
-      if (thisElement.id === 'month') {
+      if (thisElement.id === 'hour') {
           // console.log(thisElement.id + ' is toggled');
-          trafficMonth();
-      } else if (thisElement.id === 'year') {
+          trafficHour();
+      } else if (thisElement.id === 'day') {
           // console.log(thisElement.id + ' is toggled');
-          trafficYear();
+          trafficDay();
       } else if (thisElement.id === 'week') {
           // console.log(thisElement.id + ' is toggled');
           trafficWeek();
+      } else if (thisElement.id === 'month') {
+          // console.log(thisElement.id + ' is toggled');
+          trafficMonth();
       }
     }
   }
@@ -31,12 +34,37 @@ trafficToggle.addEventListener('change', function(e){
 });
 
 
+// traffic chart
+function trafficHour() {
+  var ctx = document.getElementById('traffic-chart').getContext('2d');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
 
+      // The data for our dataset
+      data: {
+          labels: ['0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900', '1000', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00'],
+          datasets: [{
+              label: '',
+              backgroundColor: ['blue', 'grey', '#5a61a8'],
+              borderColor: ['blue', 'grey', '#5a61a8'],
+              data: [0, 0, 0, 0, 4, 12, 7, 32, 140, 201, 350, 20, 43, 181, 235, 387, 210, 251, 180, 75, 56, 20, 41, 18]
+          }]
+      },
+
+      // Configuration options go here
+      options: {
+        legend: {
+          display: false
+        }
+      }
+  });
+}
 
 
 
 // traffic chart
-function trafficWeek() {
+function trafficDay() {
   var ctx = document.getElementById('traffic-chart').getContext('2d');
   var chart = new Chart(ctx, {
       // The type of chart we want to create
@@ -63,7 +91,7 @@ function trafficWeek() {
 }
 
 // traffic chart
-function trafficMonth() {
+function trafficWeek() {
   var ctx = document.getElementById('traffic-chart').getContext('2d');
   var chart = new Chart(ctx, {
       // The type of chart we want to create
@@ -89,7 +117,7 @@ function trafficMonth() {
   });
 }
 
-function trafficYear() {
+function trafficMonth() {
   var ctx = document.getElementById('traffic-chart').getContext('2d');
   var chart = new Chart(ctx, {
       // The type of chart we want to create
