@@ -100,12 +100,20 @@ var options = {
         match: {
             enabled: true
         },
-        onSelectItemEvent: function() {
+        onClickEvent: function() {
         			var value = $("#userSearch").getSelectedItemData().name;
               var memberText = $('.members-text');
+              var section = $('section.members');
+              var container = $(section).find('.members-container');
               // loop though all memberText-containers, find match in child element and add class memberSelected
-              console.log(memberText);
-
+              $(container).each( function(index) {
+                // console.log(this);
+                var thisName = $(this).find('p.name').text();
+                // console.log(thisName);
+                if (thisName === value) {
+                  $(this).addClass('selected-member');
+                }
+              });
         		}
     },
     theme: "round"

@@ -260,6 +260,9 @@ img {
     border-bottom: solid 1px #DDDDDD;
     padding: 0.75em 0 0.75em 0;
 }
+.members-container:last-child {
+  border-bottom: solid 0px #DDDDDD;
+}
 .activity-container {
   display: flex;
   flex-direction: row;
@@ -287,6 +290,8 @@ a[href*="@"], .members-text > a {
 }
 .selected-member {
   border: solid 2px #5a61a8;
+  padding: 5px;
+  border-radius: 5px;
 }
 /* ------------------------------------
   animations
