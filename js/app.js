@@ -2,6 +2,9 @@
 
 //alerts for main content
 const notifications = document.querySelector('.notifications');
+const bellMarker = document.querySelector('span.newalerts');
+let alerts = notifications.children;
+let displayedAlerts = 3;
 
 // close notification alerts
 notifications.addEventListener('click', function(event) {
@@ -10,16 +13,24 @@ notifications.addEventListener('click', function(event) {
   let eventTarget = event.target.className;
   if (eventTarget == 'close-alert') {
     alertContainer.style.display = 'none';
+    displayedAlerts += -1;
+    console.log(displayedAlerts);
+    if (displayedAlerts < 1) {
+      bellMarker.style.display = 'none';
+    }
   }
 });
 
+
+
 // open notification alerts with click on bell
 const iconBell = document.querySelector('div.bell');
+
 iconBell.addEventListener('click', function(event) {
-  let alerts = notifications.children;
-  for (let i = 0; i < alerts.length; i += 1) {
+    for (let i = 0; i < alerts.length; i += 1) {
     alerts[i].style.display = 'flex';
   }
+  bellMarker.style.display = 'inline';
 });
 
 
